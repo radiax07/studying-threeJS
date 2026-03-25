@@ -24,3 +24,11 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHei
 camera.position.z = 5
 
 scene.add(camera)
+
+// initialize the renderer
+const canvas = document.querySelector("canvas.threejs")
+const renderer = new THREE.WebGLRenderer({canvas: canvas})
+
+renderer.setSize(window.innerWidth, window.innerHeight)
+
+renderer.render(scene, camera)
