@@ -13,13 +13,15 @@ const cubeMesh = new THREE.Mesh(
 scene.add(cubeMesh) // we have to explicitly say that this is the child of the scene
 
 // initialize camera
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 30) // (FOV, Aspect Ratio, camera near, camera far)
+const camera = new THREE.PerspectiveCamera(43, window.innerWidth/window.innerHeight, 0.1, 30) // (FOV, Aspect Ratio, camera near, camera far)
 
 // camera near -> anything near than this it won't be visible
 // camera far -> anything further than this it won't be visible
 // console.log(window.innerWidth / window.innerHeight)
 
 // position the camera
+
+// FOV (Field of View) = the extent of the visible scene captured by the camera, measured as an angle (in degrees).
 
 camera.position.z = 5
 
@@ -31,6 +33,7 @@ const canvas = document.querySelector("canvas.threejs")
 // const canvasCollection = document.getElementsByClassName("threejs");
 // // You must access the first element with [0]
 // const canvas = canvasCollection[0];
+
 const renderer = new THREE.WebGLRenderer({canvas: canvas})
 
 renderer.setSize(window.innerWidth, window.innerHeight)
