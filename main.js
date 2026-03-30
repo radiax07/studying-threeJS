@@ -37,9 +37,12 @@ renderer.setSize(window.innerWidth, window.innerHeight)
 
 // Initiate the controls
 const controls = new OrbitControls(camera, canvas)
+controls.enableDamping = true
+controls.autoRotate = true
 
 const renderLoop = () => {
 
+    controls.update()
     renderer.render(scene, camera)
     window.requestAnimationFrame(renderLoop)
     // Schedules a function (callback) to run before the next repaint of the browser,
