@@ -1,6 +1,8 @@
 import * as THREE from 'three'
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
+import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
+
 
 const scene = new THREE.Scene() // it is a class so we have to use new
 
@@ -15,7 +17,7 @@ const cubeMesh = new THREE.Mesh(
 scene.add(cubeMesh) // we have to explicitly say that this is the child of the scene
 
 // initialize camera
-// const camera = new THREE.PerspectiveCamera(30, window.innerWidth/window.innerHeight, 0.1, 30) // (FOV, Aspect Ratio, camera near, camera far)
+const camera = new THREE.PerspectiveCamera(30, window.innerWidth/window.innerHeight, 0.1, 30) // (FOV, Aspect Ratio, camera near, camera far)
 
 // camera near -> anything near than this it won't be visible
 // camera far -> anything further than this it won't be visible
@@ -23,14 +25,14 @@ scene.add(cubeMesh) // we have to explicitly say that this is the child of the s
 
 // position the camera
 const aspectRatio = window.innerWidth/window.innerHeight
-const camera = new THREE.OrthographicCamera(
-  -1 * aspectRatio,
-  1 * aspectRatio,
-  1,
-  -1,
-  0.1,
-  200,
-);
+// const camera = new THREE.OrthographicCamera(
+//   -1 * aspectRatio,
+//   1 * aspectRatio,
+//   1,
+//   -1,
+//   0.1,
+//   200,
+// );
 
 camera.position.z = 5
 
@@ -47,9 +49,18 @@ const renderer = new THREE.WebGLRenderer({canvas: canvas})
 renderer.setSize(window.innerWidth, window.innerHeight)
 
 
-const controls = new OrbitControls(camera, canvas)
-controls.autoRotate = true
-controls.enableDamping = true
+// const controls = new OrbitControls(camera, canvas)
+// controls.autoRotate = true
+// controls.enableDamping = true
+
+const controls = new TrackballControls(camera, canvas)
+
+controls.mouseButtons = {
+  LEFT: THREE.MOUSE.ROTATE,
+  MIDDLE: THREE.MOUSE.DOLLY,
+  RIGHT: THREE.MOUSE.PAN,
+};
+
 const renderLoop = () => {
     controls.update()
     renderer.render(scene, camera)
