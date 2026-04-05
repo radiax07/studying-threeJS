@@ -44,9 +44,14 @@ const canvas = document.querySelector("canvas.threejs");
 // const canvasCollection = document.getElementsByClassName("threejs");
 // // You must access the first element with [0]
 // const canvas = canvasCollection[0];
-const renderer = new THREE.WebGLRenderer({ canvas: canvas });
+const renderer = new THREE.WebGLRenderer({
+  canvas: canvas,
+  antialias: true
+});
 
 renderer.setSize(window.innerWidth, window.innerHeight);
+const maxPixelRatio = Math.min(window.devicePixelRatio, 2)
+renderer.setPixelRatio(maxPixelRatio)
 
 const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
