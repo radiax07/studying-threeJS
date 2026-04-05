@@ -11,7 +11,12 @@ const cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
 scene.add(cubeMesh); // we have to explicitly say that this is the child of the scene
 
 // initialize camera
-const camera = new THREE.PerspectiveCamera(20, window.innerWidth/window.innerHeight, 0.1, 30) // (FOV, Aspect Ratio, camera near, camera far)
+const camera = new THREE.PerspectiveCamera(
+  20,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  30,
+); // (FOV, Aspect Ratio, camera near, camera far)
 
 // const aspectRatio = window.innerWidth / window.innerHeight;
 // const camera = new THREE.OrthographicCamera(
@@ -41,16 +46,17 @@ const canvas = document.querySelector("canvas.threejs");
 // const canvas = canvasCollection[0];
 const renderer = new THREE.WebGLRenderer({ canvas: canvas });
 
+renderer.setSize(window.innerWidth, window.innerHeight);
 
 const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
-controls.autoRotate = true;
+// controls.autoRotate = true;
 
 window.addEventListener("resize", () => {
-    camera.aspect = window.innerWidth/window.innerHeight
-    camera.updateProjectionMatrix() 
-    renderer.setSize(window.innerWidth, window.innerHeight);
-})
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
 
 const renderLoop = () => {
   controls.update();
