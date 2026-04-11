@@ -10,6 +10,13 @@ const cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
 
 scene.add(cubeMesh); // we have to explicitly say that this is the child of the scene
 
+cubeMesh.position.y = 0.5
+cubeMesh.position.z = 0.5
+cubeMesh.position.x = 0.5
+
+const axesHelper = new THREE.AxesHelper(2)
+scene.add(axesHelper)
+
 // initialize camera
 const camera = new THREE.PerspectiveCamera(
   20,
@@ -46,7 +53,7 @@ const canvas = document.querySelector("canvas.threejs");
 // const canvas = canvasCollection[0];
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
-  antialias: true
+  antialias: true 
 });
 
 renderer.setSize(window.innerWidth, window.innerHeight);
