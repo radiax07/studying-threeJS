@@ -10,6 +10,7 @@ const cubeMesh = new THREE.Mesh(
     cubeMaterial
 )
 
+
 scene.add(cubeMesh) // we have to explicitly say that this is the child of the scene
 
 // initialize camera
