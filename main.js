@@ -31,6 +31,7 @@ const canvas = document.querySelector("canvas.threejs")
 // const canvasCollection = document.getElementsByClassName("threejs");
 // // You must access the first element with [0]
 // const canvas = canvasCollection[0];
+
 const renderer = new THREE.WebGLRenderer({canvas: canvas})
 
 renderer.setSize(window.innerWidth, window.innerHeight)
